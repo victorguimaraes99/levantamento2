@@ -27,7 +27,7 @@ if check_password():
 
     @st.cache_data
     def carregar_dados():
-        # Carregamento da base conforme solicitado
+        # Carregamento da base
         df = pd.read_excel("spell.xlsx")
         df.columns = [c.strip() for c in df.columns]
         # Métrica de eficiência (Citações por Documento)
@@ -138,5 +138,3 @@ if check_password():
     if st.button("Sair e Bloquear Dados"):
         st.session_state.clear()
         st.rerun()
-
-st.caption("Dashboard de Análise Bibliométrica | Dados Protegidos")
