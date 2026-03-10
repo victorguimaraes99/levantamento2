@@ -6,19 +6,17 @@ import re
 # CONFIGURAÇÃO DA PÁGINA
 st.set_page_config(page_title="Análise de Periódicos", layout="wide")
 
-# ==============================
-# SISTEMA DE SENHA (CENTRALIZADO)
-# ==============================
+# SISTEMA DE SENHA
 def check_password():
     def password_entered():
-        if st.session_state["password"] == "contabilidade2026":
+        if st.session_state["password"] == "1234":
             st.session_state["password_correct"] = True
             del st.session_state["password"]
         else:
             st.session_state["password_correct"] = False
 
     if "password_correct" not in st.session_state:
-        st.markdown("<h2 style='text-align: center;'>🔒 Acesso Restrito</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center;'>Acesso Restrito</h2>", unsafe_allow_html=True)
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             st.text_input("Digite a senha para visualizar os dados", type="password", on_change=password_entered, key="password")
@@ -38,7 +36,7 @@ if check_password():
 
     df = carregar_dados()
 
-    st.title("📑 Produção Científica: Painel de Periódicos")
+    st.title("Produção Científica: Painel de Periódicos")
     st.markdown("---")
 
     # ==============================
@@ -47,10 +45,10 @@ if check_password():
     
     col_busca, col_select = st.columns([1, 1])
     with col_busca:
-        busca = st.text_input("🔎 Buscar por Nome ou ISSN", placeholder="Ex: 2177-6083...").lower()
+        busca = st.text_input("Buscar por Nome ou ISSN", placeholder="Ex: 2177-6083...").lower()
     with col_select:
         lista_periodicos = sorted(df['periodico'].unique())
-        selecionados = st.multiselect("📚 Selecionar Periódicos Específicos", options=lista_periodicos)
+        selecionados = st.multiselect("Selecionar Periódicos Específicos", options=lista_periodicos)
 
     st.write("### ⚙️ Refinar por Indicadores")
     
@@ -94,7 +92,7 @@ if check_password():
     # EVIDÊNCIA DE TOTAIS (KPIs)
     # ==============================
     if not df_filtrado.empty:
-        st.subheader("💡 Totais da Seleção")
+        st.subheader("Totais da Seleção")
         
         # Criando 4 colunas para os totais principais
         t1, t2, t3, t4 = st.columns(4)
