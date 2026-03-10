@@ -39,9 +39,7 @@ if check_password():
     st.title("Produção Científica: Painel de Periódicos")
     st.markdown("---")
 
-    # ==============================
     # FILTROS E BUSCA (ÁREA CENTRAL)
-    # ==============================
     
     col_busca, col_select = st.columns([1, 1])
     with col_busca:
@@ -88,9 +86,8 @@ if check_password():
 
     st.markdown("---")
 
-    # ==============================
     # EVIDÊNCIA DE TOTAIS (KPIs)
-    # ==============================
+    
     if not df_filtrado.empty:
         st.subheader("Totais da Seleção")
         
@@ -108,9 +105,8 @@ if check_password():
         
         st.markdown("---")
 
-        # ==============================
         # GRÁFICOS E TABELA
-        # ==============================
+        
         col_graf1, col_graf2 = st.columns(2)
 
         with col_graf1:
